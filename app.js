@@ -4,27 +4,22 @@ const app=express()
 
 let port=4000
 
-app.use((req,res,next)=>{
-    console.log('Authentication middle called')
-    next()
+app.use(express.json());
+
+app.get('/order',(req,res)=>{
+    res.send('here is the list of orders')
 })
-app.use("/library-2",(req,res,next)=>{
-    console.log('books recommondation from library!')
-    next();
+app.post("sorder/",(req,res)=>{
+res.send('A new order has been created')
 })
 
-app.use((req,res,next)=>{
-    console.log('special access to research paper from professors and seniors')
-    next()
-})
-app.get("/library-2",(req,res,next)=>{
-    res.send("<h1>Library two entered</h1>")
+app.get('/users',(req,res)=>{
+    res.send('here is the list of all users')
 })
 
-app.get("/library-3",(req,res,next)=>{
-    res.send("<h2>library 3 entered</h2>")
-    
+app.post('/users',()=>{
+    res.send("A new user has been added.")
 })
 app.listen(port,()=>{
-    console.log('server is running')
-})
+    console.log(`server is running at http://localhost:${port}`);
+});
