@@ -1,11 +1,11 @@
 import express from "express"
-import homeouter from "./routes/home.js";
-import courserouter from "./routes/course.js";
-import studentrouter from "./routes/student.js";
+import userrouter from "./routes/userRoutes";
+import productrouter from "./routes/productRoutes";
+import cartrouter from "./routes/cartRoutes";
 const app=express();
-app.use('/home',homeouter)
-app.use('/course',courserouter)
-app.use('/student',studentrouter)
+app.use('/user',userrouter)
+app.use('/product',productrouter)
+app.use('/cart',cartrouter)
 app.use((req,res,next)=>{
     res.status(404).send('module not found')
 })
